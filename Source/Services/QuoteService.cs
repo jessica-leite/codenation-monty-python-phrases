@@ -1,6 +1,5 @@
-using System;
-using System.Linq;
 using Codenation.Challenge.Models;
+using System.Linq;
 
 namespace Codenation.Challenge.Services
 {
