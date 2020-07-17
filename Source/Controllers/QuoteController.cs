@@ -32,12 +32,12 @@ namespace Codenation.Challenge.Controllers
         [HttpGet("{actor}")]
         public ActionResult<QuoteView> GetAnyQuote(string actor)
         {
-            if (!_service.HasQuoteByActor(actor))
+            var quote = _service.GetAnyQuote(actor);
+
+            if (quote == null)
             {
                 return NotFound();
             }
-
-            var quote = _service.GetAnyQuote(actor);
 
             return Ok(new QuoteView()
             {

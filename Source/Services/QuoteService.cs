@@ -25,17 +25,18 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote(string actor)
         {
-            var maxIndex = _context.Quotes.Count(q => q.Actor == actor);
-            var index = _randomService.RandomInteger(maxIndex);
+            var quotesLength = _context.Quotes.Count(q => q.Actor == actor);
+
+            if (quotesLength == 0)
+            {
+                return null;
+            }
+
+            var index = _randomService.RandomInteger(quotesLength);
 
             return _context.Quotes
                 .Where(q => q.Actor == actor)
                 .ElementAt(index);
-        }
-
-        public bool HasQuoteByActor(string actor)
-        {
-            return _context.Quotes.Any(q => q.Actor == actor);
         }
     }
 }
