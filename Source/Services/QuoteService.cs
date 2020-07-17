@@ -16,8 +16,14 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote()
         {
-            var maxIndex = _context.Quotes.Count() - 1;
-            var index = _randomService.RandomInteger(maxIndex);
+            var quotesLength = _context.Quotes.Count();
+
+            if (quotesLength == 0)
+            {
+                return null;
+            }
+
+            var index = _randomService.RandomInteger(quotesLength - 1);
 
             return _context.Quotes
                 .ElementAt(index);
@@ -32,7 +38,7 @@ namespace Codenation.Challenge.Services
                 return null;
             }
 
-            var index = _randomService.RandomInteger(quotesLength);
+            var index = _randomService.RandomInteger(quotesLength - 1);
 
             return _context.Quotes
                 .Where(q => q.Actor == actor)

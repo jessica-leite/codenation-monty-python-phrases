@@ -20,6 +20,12 @@ namespace Codenation.Challenge.Controllers
         public ActionResult<QuoteView> GetAnyQuote()
         {
             var quote = _service.GetAnyQuote();
+
+            if (quote == null)
+            {
+                return NotFound();
+            }
+
             return Ok(new QuoteView()
             {
                 Id = quote.Id,

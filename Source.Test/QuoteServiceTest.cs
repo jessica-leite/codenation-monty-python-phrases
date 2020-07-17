@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Codenation.Challenge
@@ -29,19 +28,16 @@ namespace Codenation.Challenge
             fakeDbSet.As<IQueryable<Quote>>().Setup(x => x.ElementType).Returns(fakeQuotes.ElementType);
             fakeDbSet.As<IQueryable<Quote>>().Setup(x => x.GetEnumerator()).Returns(fakeQuotes.GetEnumerator());
 
-            this.fakeContext = new Mock<ScriptsContext>();            
+            this.fakeContext = new Mock<ScriptsContext>();
             this.fakeContext.Setup(x => x.Quotes).Returns(fakeDbSet.Object);
         }
 
         [Fact]
         public void Should_Returns_Null_When_Get_Any_Quote_By_Non_Exists_Actor()
         {
-            var fakeService = new QuoteService(fakeContext.Object, new RandomService());            
+            var fakeService = new QuoteService(fakeContext.Object, new RandomService());
             var actual = fakeService.GetAnyQuote("Brian");
             Assert.Null(actual);
         }
-
-
     }
-
 }
