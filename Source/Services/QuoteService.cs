@@ -17,13 +17,17 @@ namespace Codenation.Challenge.Services
         public Quote GetAnyQuote()
         {
             var maxIndex = _context.Quotes.Count();
+            var index = _randomService.RandomInteger(maxIndex);
 
-            return _context.Quotes.Find(_randomService.RandomInteger(maxIndex));
+            return _context.Quotes.ElementAt(index);
         }
 
         public Quote GetAnyQuote(string actor)
         {
-            throw new System.NotImplementedException();
+            var maxIndex = _context.Quotes.Count(q => q.Actor == actor);
+            var index = _randomService.RandomInteger(maxIndex);
+
+            return _context.Quotes.Where(q => q.Actor == actor).ElementAt(index);
         }
     }
 }

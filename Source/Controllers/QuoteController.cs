@@ -26,15 +26,20 @@ namespace Codenation.Challenge.Controllers
                 Actor = quote.Actor,
                 Detail = quote.Detail
             });
-
         }
 
         // GET api/quote/{actor}
         [HttpGet("{actor}")]
         public ActionResult<QuoteView> GetAnyQuote(string actor)
         {
-            return NotFound();
-        }
+            var quote = _service.GetAnyQuote(actor);
 
+            return Ok(new QuoteView()
+            {
+                Id = quote.Id,
+                Actor = quote.Actor,
+                Detail = quote.Detail
+            });
+        }
     }
 }

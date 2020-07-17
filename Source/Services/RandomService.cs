@@ -2,11 +2,11 @@ using System;
 
 namespace Codenation.Challenge.Services
 {
-    public class RandomService: IRandomService
+    public class RandomService : IRandomService
     {
         public int RandomInteger(int max)
         {
-            return new Random().Next(1, max);
+            return new Random().Next(max);
         }
     }
 }
