@@ -17,7 +17,7 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote()
         {
-            var maxIndex = _context.Quotes.Count() - 1;
+            var maxIndex = _context.Quotes.Count();
 
             return _context.Quotes.Find(_randomService.RandomInteger(maxIndex));
         }
