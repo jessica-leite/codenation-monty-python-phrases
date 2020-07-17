@@ -16,10 +16,11 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote()
         {
-            var maxIndex = _context.Quotes.Count();
+            var maxIndex = _context.Quotes.Count() - 1;
             var index = _randomService.RandomInteger(maxIndex);
 
-            return _context.Quotes.ElementAt(index);
+            return _context.Quotes
+                .ElementAt(index);
         }
 
         public Quote GetAnyQuote(string actor)
@@ -27,7 +28,14 @@ namespace Codenation.Challenge.Services
             var maxIndex = _context.Quotes.Count(q => q.Actor == actor);
             var index = _randomService.RandomInteger(maxIndex);
 
-            return _context.Quotes.Where(q => q.Actor == actor).ElementAt(index);
+            return _context.Quotes
+                .Where(q => q.Actor == actor)
+                .ElementAt(index);
+        }
+
+        public bool HasQuoteByActor(string actor)
+        {
+            return _context.Quotes.Any(q => q.Actor == actor);
         }
     }
 }

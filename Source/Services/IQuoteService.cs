@@ -7,5 +7,6 @@ namespace Codenation.Challenge.Services
     {
         Quote GetAnyQuote();
         Quote GetAnyQuote(string actor);
+        bool HasQuoteByActor(string actor);
     }
 }
