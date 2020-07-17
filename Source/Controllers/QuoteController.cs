@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Codenation.Challenge.Models;
+﻿using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +19,14 @@ namespace Codenation.Challenge.Controllers
         [HttpGet]
         public ActionResult<QuoteView> GetAnyQuote()
         {
-            return NotFound();
+            var quote = _service.GetAnyQuote();
+            return Ok(new QuoteView()
+            {
+                Id = quote.Id,
+                Actor = quote.Actor,
+                Detail = quote.Detail
+            });
+
         }
 
         // GET api/quote/{actor}

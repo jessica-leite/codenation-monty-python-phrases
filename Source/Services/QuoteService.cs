@@ -17,7 +17,9 @@ namespace Codenation.Challenge.Services
 
         public Quote GetAnyQuote()
         {
-            throw new System.NotImplementedException();
+            var maxIndex = _context.Quotes.Count() - 1;
+
+            return _context.Quotes.Find(_randomService.RandomInteger(maxIndex));
         }
 
         public Quote GetAnyQuote(string actor)
