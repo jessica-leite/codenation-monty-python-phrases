@@ -26,12 +26,12 @@ namespace Codenation.Challenge.Controllers
                 return NotFound();
             }
 
-            return Ok(new QuoteView()
+            return new QuoteView()
             {
                 Id = quote.Id,
                 Actor = quote.Actor,
                 Detail = quote.Detail
-            });
+            };
         }
 
         // GET api/quote/{actor}
@@ -45,12 +45,12 @@ namespace Codenation.Challenge.Controllers
                 return NotFound();
             }
 
-            return Ok(new QuoteView()
+            return new QuoteView()
             {
                 Id = quote.Id,
                 Actor = quote.Actor,
                 Detail = quote.Detail
-            });
+            };
         }
     }
 }

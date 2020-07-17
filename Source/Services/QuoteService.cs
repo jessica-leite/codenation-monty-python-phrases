@@ -23,7 +23,7 @@ namespace Codenation.Challenge.Services
                 return null;
             }
 
-            var index = _randomService.RandomInteger(quotesLength - 1);
+            var index = _randomService.RandomInteger(quotesLength);
 
             return _context.Quotes
                 .ElementAt(index);
@@ -38,7 +38,7 @@ namespace Codenation.Challenge.Services
                 return null;
             }
 
-            var index = _randomService.RandomInteger(quotesLength - 1);
+            var index = _randomService.RandomInteger(quotesLength);
 
             return _context.Quotes
                 .Where(q => q.Actor == actor)

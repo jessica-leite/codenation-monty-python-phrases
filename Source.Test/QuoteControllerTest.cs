@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Codenation.Challenge.Controllers;
 using Codenation.Challenge.Models;
 using Codenation.Challenge.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Codenation.Challenge
